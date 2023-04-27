@@ -15,11 +15,12 @@ export class UserService {
     const createdUser = new this.userModel(createUserDto);
     return createdUser.save();
   }
+
   async findAll(): Promise<User[]> {
     return this.userModel.find().exec();
   }
 
-  async findOne(name: string): Promise<User[] | undefined> {
-    return this.userModel.find((user: { name: string }) => user.name === name);
+  async findOne(email: string): Promise<User | undefined> {
+    return this.userModel.findOne({ email }).exec();
   }
 }
