@@ -1,6 +1,7 @@
 import { MongooseModule } from "@nestjs/mongoose";
 import { Module } from "@nestjs/common";
-import { AppController } from "./app.controller";
+import { UserController } from "./user/user.controller";
+import { CustomerController } from "./customer/customer.controller";
 import { AppService } from "./app.service";
 import { UserModule } from "./user/user.module";
 import { CustomerService } from "./customer/customer.service";
@@ -21,7 +22,7 @@ dotenv.config();
     CustomerModule,
     AuthModule,
   ],
-  controllers: [AppController],
+  controllers: [UserController, CustomerController],
   providers: [
     AppService,
     CustomerService,
