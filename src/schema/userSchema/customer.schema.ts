@@ -5,6 +5,9 @@ export type CustomerDocument = HydratedDocument<Customer>;
 
 @Schema()
 export class Customer {
+  @Prop({ autoIcrement: true })
+  id: number;
+
   @Prop({ required: true })
   firstName: string;
 
