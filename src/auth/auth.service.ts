@@ -27,8 +27,8 @@ export class AuthService {
         });
         return { result, accessToken };
       }
-    } else if (!customer) {
-      const isMatch = await compare(password, user[0].password);
+    } else {
+      const isMatch = await compare(password, user.password);
       if (isMatch) {
         const { password: _, ...result } = user || customer[0];
         const accessToken = sign(result, process.env.JWT_SECRET_KEY, {
@@ -36,8 +36,7 @@ export class AuthService {
         });
         return { result, accessToken };
       }
-    } else {
-      throw new UnauthorizedException("Invalid credentials");
     }
+    throw new UnauthorizedException("Invalid credentials");
   }
 }
